@@ -78,7 +78,7 @@ export default function MediaDashboard() {
           <div>
             {analysisResult ? (
               <div className="space-y-6">
-                <VerdictCard result={analysisResult} />
+                <VerdictCard result={analysisResult} file={file} />
                 <DetectionSignals signals={analysisResult.signals} />
                 <MetadataCard result={analysisResult} />
               </div>

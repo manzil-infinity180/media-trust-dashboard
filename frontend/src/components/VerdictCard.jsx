@@ -1,12 +1,26 @@
 import React from 'react';
-import { CheckCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, AlertCircle,Download } from 'lucide-react';
 import { getVerdictColor, getVerdictLabel } from '../utils/helpers';
+import { generatePDF } from '../utils/pdfExport';
 
-export default function VerdictCard({ result }) {
+export default function VerdictCard({ result, file }) {
+    const handleExport = () => {
+    generatePDF(result, file.name);
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-sm p-6">
-      <h2 className="text-xl font-semibold text-slate-800 mb-4">Analysis Results</h2>
-      
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl font-semibold text-slate-800">Analysis Results</h2>
+        <button
+          onClick={handleExport}
+          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+        >
+          <Download className="w-4 h-4" />
+          Export Report
+        </button>
+      </div>
+    
       <div className={`rounded-lg p-4 mb-4 ${getVerdictColor(result.verdict)}`}>
         <div className="flex items-center gap-2 mb-2">
           {result.verdict === 'likely_real' ? (
