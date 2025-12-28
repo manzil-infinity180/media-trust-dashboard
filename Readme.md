@@ -169,7 +169,7 @@ GET /health
 ## API Flow Diagram 
 
 <div align="center">
-<img width="1090" height="1244" alt="Screenshot 2025-12-28 at 4 50 27 PM" src="https://github.com/user-attachments/assets/3c9cc112-8a97-40fe-92b4-f87f0e901451" />
+<img width="520" height="772" alt="Screenshot 2025-12-28 at 4 50 27 PM" src="https://github.com/user-attachments/assets/0d397448-c2c2-46e7-b231-7a0604c53228" />
 </div>
 
 ## Key design decisions
@@ -188,11 +188,14 @@ GET /health
 
 ## What you would improve given more time
 
-1. Improve `file hash` handling so the system can detect whether the same file is being analyzed again. Currently, the same file gets a different `media_id` each time. Using file hashes would help avoid duplicate processing or allow a re-analysis option
-2. Explore more `metadata (EXIF)` extraction for audio and video files to enhance `deepfake detection using metadata` signals. Even though metadata can be edited, it can still act as an additional signal
-3. Replace the simulated background processing with a proper job queue
-4. Adding Unit tests for all services (Jest)
-6. Add real-time status updates using `WebSockets` or `Server-Sent Events` for the `/media/analyze/:media_id` endpoint instead of polling
-7. Support cloud object storage (e.g., S3) instead of local filesystem storage for better scalability and durability
-8. Add structured logging, metrics, and tracing to improve observability and debugging
-9. API versioning (/api/v1, /api/v2) for backward compatibility
+1. Add `file hash` handling so the system can detect whether the same file is being analyzed again. Currently, the same file gets a different `media_id` each time. Using file hashes would help avoid duplicate processing or allow a re-analysis option
+2. Add `metadata (EXIF)` extraction for audio and video files to enhance `deepfake detection using metadata` signals. Even though metadata can be edited, it can still act as an additional signal
+3. Add a history or listing view of previous analyses so users can see past uploads and results, instead of only viewing a single analysis at a time.
+4. Improve the report export feature. Currently, the analysis report is exported as HTML. With more time, this could be changed to support PDF export
+5. Add support for uploading multiple files at the same time, so users can analyze several audio or video files in one go.
+6. Replace the simulated background processing with a proper job queue
+7. Adding Unit tests for all services (Jest)
+8. Add real-time status updates using `WebSockets` or `Server-Sent Events` for the `/media/analyze/:media_id` endpoint instead of polling
+9. Support cloud object storage (e.g., S3) instead of local filesystem storage for better scalability and durability
+10. Add logging, metrics, and tracing to improve observability and debugging
+11. API versioning (/api/v1, /api/v2) for backward compatibility
