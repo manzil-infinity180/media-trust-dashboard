@@ -16,7 +16,6 @@ export const getVerdictColor = (verdict) => {
 export const getVerdictLabel = (verdict) => {
   return verdict.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
-
 export const getSignalColor = (value) => {
   switch (value) {
     case 'natural':

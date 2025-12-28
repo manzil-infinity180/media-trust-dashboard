@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import useMediaAnalysis from "../hooks/useMediaAnalysis";
 import DashboardHeader from "./DashboardHeader";
 import FileUploadSection from "./FileUploadSection";
@@ -57,7 +56,7 @@ export default function MediaDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100">
       <div className="max-w-6xl mx-auto p-6">
         <DashboardHeader />
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Music } from 'lucide-react';
 
 export default function MediaPreview({ file, previewUrl }) {
@@ -12,7 +11,7 @@ export default function MediaPreview({ file, previewUrl }) {
       
       {isAudio ? (
         <div className="space-y-4">
-          <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg p-8 flex items-center justify-center">
+          <div className="bg-linear-to-br from-blue-500 to-purple-600 rounded-lg p-8 flex items-center justify-center">
             <Music className="w-16 h-16 text-white" />
           </div>
           <audio controls className="w-full">

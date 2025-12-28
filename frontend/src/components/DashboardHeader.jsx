@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function DashboardHeader() {
   return (
     <div className="bg-white rounded-lg shadow-sm p-6 mb-6">

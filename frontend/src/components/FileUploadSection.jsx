@@ -1,4 +1,3 @@
-import React from 'react';
 import { Upload, PlayCircle } from 'lucide-react';
 import ErrorAlert from './ErrorAlert';
 

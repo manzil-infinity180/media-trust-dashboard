@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckCircle, AlertCircle,Download } from 'lucide-react';
 import { getVerdictColor, getVerdictLabel } from '../utils/helpers';
 import { generatePDF } from '../utils/pdfExport';
@@ -46,7 +45,7 @@ export default function VerdictCard({ result, file }) {
         </div>
         <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 transition-all duration-500"
+            className="h-full bg-linear-to-r from-green-500 via-yellow-500 to-red-500 transition-all duration-500"
             style={{ width: `${result.fake_score * 100}%` }}
           ></div>
         </div>
