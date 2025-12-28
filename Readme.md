@@ -1,4 +1,12 @@
 # Media Trust Analysis Dashboard
+
+
+https://github.com/user-attachments/assets/fa679699-5619-42b1-aacd-d6861c016727
+
+<div align="center">
+<img width="2248" height="1586" alt="Screenshot 2025-12-28 at 11 38 40 AM" src="https://github.com/user-attachments/assets/b5efc7b9-cb2f-4767-b3c8-7a0074d5adf4" />
+</div>
+
 ## Backend Setup
 ```
 # Clone the repository
@@ -21,6 +29,7 @@ EOF
 
 # Start the backend server
 npm run dev
+
 ```
 * Backend will run on `http://localhost:3000`
 
@@ -141,3 +150,6 @@ GET /health
     "uptime": 2654.789405458
 }
 ```
+<div align="center">
+<img width="1323" height="760" alt="Screenshot 2025-12-28 at 12 56 07 PM" src="https://github.com/user-attachments/assets/47ebe3cf-5ed0-42a2-910c-7e9cf6126ee8" />
+</div>
