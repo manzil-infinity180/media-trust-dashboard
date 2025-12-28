@@ -7,10 +7,13 @@ https://github.com/user-attachments/assets/fa679699-5619-42b1-aacd-d6861c016727
 <img width="2248" height="1586" alt="Screenshot 2025-12-28 at 11 38 40 AM" src="https://github.com/user-attachments/assets/b5efc7b9-cb2f-4767-b3c8-7a0074d5adf4" />
 </div>
 
+# Local Setup 
+Prerequisites - Node.js v18 or higher, npm, git
+
 ## Backend Setup
 ```
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/manzil-infinity180/media-trust-dashboard
 cd media-trust-dashboard
 
 # Navigate to backend
@@ -45,6 +48,19 @@ npm install
 npm run dev
 ```
 * Frontend will run on `http://localhost:5173`
+
+## System architecture
+
+<div align="center">
+<img width="1323" height="760" alt="Screenshot 2025-12-28 at 12 56 07 PM" src="https://github.com/user-attachments/assets/47ebe3cf-5ed0-42a2-910c-7e9cf6126ee8" />
+</div>
+
+## Tech Stack
+### Backend
+NodeJS(Express.js), SQlite, Multer(file upload), express-validator
+
+### Frontend
+React(Vite), Tailwind CSS, Fetch API, Lucide React(for Icons)
 
 ## API Documentation
 
@@ -150,6 +166,28 @@ GET /health
     "uptime": 2654.789405458
 }
 ```
-<div align="center">
-<img width="1323" height="760" alt="Screenshot 2025-12-28 at 12 56 07 PM" src="https://github.com/user-attachments/assets/47ebe3cf-5ed0-42a2-910c-7e9cf6126ee8" />
-</div>
+
+## Key design decisions
+
+1. Separated business logic into dedicated service modules instead of putting everything in route handlers. It's easier to add the unit test in the future
+2. Treated the deepfake detection engine as an external black box with a well-defined interface. Easier to integrate with the real deepfake detection engine
+3. Used SQLite instead of in-memory storage, JSON files. Reasons are zero setup, ACID compliance, and support for SQL queries
+4. For the endpoint `media/analyze/:media_id`, started analysis in the background (non-blocking), have the client poll for results. This provides a better User Experience
+5. Used `express-validator` for input validation and centralized error handling middleware
+
+## How this system would integrate with a real detection engine in production
+
+1. Replace the mock implementation in `detectionClient.js` with calls to a real detection API, we need our authentication and authorization, or if it need api_key to call the api
+2. Adding Job Queue for Background Processing, especially for handling the `/media/analyze/:media_id` at scale
+3. Add timeouts, retries, and proper failure handling would be added around the detection call
+
+## What you would improve given more time
+
+1. Improve `file hash` handling so the system can detect whether the same file is being analyzed again. Currently, the same file gets a different `media_id` each time. Using file hashes would help avoid duplicate processing or allow a re-analysis option
+2. Explore more `metadata (EXIF)` extraction for audio and video files to enhance `deepfake detection using metadata` signals. Even though metadata can be edited, it can still act as an additional signal
+3. Replace the simulated background processing with a proper job queue
+4. Adding Unit tests for all services (Jest)
+6. Add real-time status updates using `WebSockets` or `Server-Sent Events` for the `/media/analyze/:media_id` endpoint instead of polling
+7. Support cloud object storage (e.g., S3) instead of local filesystem storage for better scalability and durability
+8. Add structured logging, metrics, and tracing to improve observability and debugging
+9. API versioning (/api/v1, /api/v2) for backward compatibility

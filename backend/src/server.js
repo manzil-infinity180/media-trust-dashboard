@@ -12,8 +12,12 @@ const PORT = process.env.PORT || 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-app.use(cors());
+const FRONTEND_API = process.env.FRONTEND_API || "http://localhost:5173/"
+app.use(cors({
+    origin: FRONTEND_API,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE']
+    // other options for prod
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
