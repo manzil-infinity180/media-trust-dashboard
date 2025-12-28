@@ -166,6 +166,11 @@ GET /health
     "uptime": 2654.789405458
 }
 ```
+## API Flow Diagram 
+
+<div align="center">
+<img width="1090" height="1244" alt="Screenshot 2025-12-28 at 4 50 27 PM" src="https://github.com/user-attachments/assets/3c9cc112-8a97-40fe-92b4-f87f0e901451" />
+</div>
 
 ## Key design decisions
 
